@@ -76,7 +76,7 @@ class MessengerClient:
                         elif res == "af": print("\nsu: Authentication failure")
                     elif msg.startswith("/ping|"):
                         et = time.time(); st_cli, st_ser = msg.replace("/ping|", "").split("|"); st_cli, st_ser = [float(st_cli), float(st_ser)]
-                        log.info(f"You -----({st_ser - st_cli}ms)-----> Server -----({et - st_ser}ms)-----> You | {et - st_cli}ms")
+                        log.info(f"You -----({round((st_ser - st_cli) * 1000, 2)}ms)-----> Server -----({round((et - st_ser) * 1000, 2)}ms)-----> You | {round((et - st_cli) * 1000, 2)}ms")
                 elif logType == "exit": log.warning(msg); os.system(f"taskkill /f /pid {self.pid}") #서버에서 연결 끊을시 하는 작업
                 elif logType == "warning": log.warning(f"{sender}: {msg}")
                 elif logType == "error": log.error(f"{sender}: {msg}")
